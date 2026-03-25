@@ -86,18 +86,36 @@ const Footer = () => {
               </div>
             </div>
             <div className="flex items-center gap-6 mt-6">
-              <FontAwesomeIcon
-                icon={faFacebookSquare}
-                className="text-white hover:text-[#1877F2] transition-colors duration-300 cursor-pointer h-8 w-8"
-              />
-              <FontAwesomeIcon
-                icon={faInstagram}
-                className="text-white hover:text-[#E4405F] transition-colors duration-300 cursor-pointer h-8 w-8"
-              />
-              <FontAwesomeIcon
-                icon={faLinkedin}
-                className="text-white hover:text-[#0A66C2] transition-colors duration-300 cursor-pointer h-8 w-8"
-              />
+              <a
+                href="https://www.facebook.com/share/1QXrzbhibz/?mibextid=wwXIfr"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FontAwesomeIcon
+                  icon={faFacebookSquare}
+                  className="text-white hover:text-[#1877F2] transition-colors duration-300 cursor-pointer h-8 w-8"
+                />
+              </a>
+              <a
+                href="https://www.instagram.com/acmesecure?igsh=djZmcXZ4MXp1bG1m"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FontAwesomeIcon
+                  icon={faInstagram}
+                  className="text-white hover:text-[#E4405F] transition-colors duration-300 cursor-pointer h-8 w-8"
+                />
+              </a>
+              <a
+                href="https://www.linkedin.com/company/acmesecure/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FontAwesomeIcon
+                  icon={faLinkedin}
+                  className="text-white hover:text-[#0A66C2] transition-colors duration-300 cursor-pointer h-8 w-8"
+                />
+              </a>
             </div>
           </div>
         </div>
