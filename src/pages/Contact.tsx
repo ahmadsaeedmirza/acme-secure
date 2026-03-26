@@ -1,9 +1,11 @@
 import ContactForm from "@/components/ContactForm";
+import PageHero from "@/components/PageHero";
+import heroContact from "@/assets/hero-contact.jpg";
 
 const Contact = () => {
   return (
     <>
-      <section className="pt-32 pb-12 px-4 bg-section-dark">
+      {/* <section className="pt-32 pb-12 px-4 bg-section-dark">
         <div className="container mx-auto text-center">
           <h1 className="text-4xl md:text-5xl font-heading font-bold text-primary-foreground mb-4">
             Contact Us
@@ -12,7 +14,12 @@ const Contact = () => {
             Get in touch for a free, no-obligation quote. We're here to help secure your business.
           </p>
         </div>
-      </section>
+      </section> */}
+      <PageHero
+        image={heroContact}
+        title="Contact Us"
+        subtitle="Get in touch for a free, no-obligation quote. We're here to help secure your business."
+      />
       <ContactForm />
     </>
   );

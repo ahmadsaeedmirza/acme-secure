@@ -1,10 +1,12 @@
 import ServicesGrid from "@/components/ServicesGrid";
 import CTABanner from "@/components/CTABanner";
+import PageHero from "@/components/PageHero";
+import heroServices from "@/assets/hero-services.jpg";
 
 const Services = () => {
   return (
     <>
-      <section className="pt-32 pb-12 px-4 bg-section-dark">
+      {/* <section className="pt-32 pb-12 px-4 bg-section-dark">
         <div className="container mx-auto text-center">
           <h1 className="text-4xl md:text-5xl font-heading font-bold text-primary-foreground mb-4">
             Our Services
@@ -13,7 +15,12 @@ const Services = () => {
             Comprehensive security solutions tailored to protect your people, property, and assets across the UK.
           </p>
         </div>
-      </section>
+      </section> */}
+      <PageHero
+        image={heroServices}
+        title="Our Services"
+        subtitle="Comprehensive security solutions tailored to protect your people, property, and assets across the UK."
+      />
       <ServicesGrid showHeading={false} />
       <CTABanner />
     </>
