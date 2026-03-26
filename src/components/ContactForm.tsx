@@ -120,7 +120,7 @@ const ContactForm = () => {
                   Full Name *
                 </label>
                 <Input
-                  placeholder="John Smith"
+                  placeholder="Name"
                   value={formData.name}
                   onChange={(e) =>
                     setFormData({ ...formData, name: e.target.value })
@@ -135,7 +135,7 @@ const ContactForm = () => {
                 </label>
                 <Input
                   type="email"
-                  placeholder="john@company.co.uk"
+                  placeholder="Email"
                   value={formData.email}
                   onChange={(e) =>
                     setFormData({ ...formData, email: e.target.value })
@@ -153,7 +153,7 @@ const ContactForm = () => {
                 </label>
                 <Input
                   type="tel"
-                  placeholder="07xxx xxx xxx"
+                  placeholder="Phone Number"
                   value={formData.phone}
                   onChange={(e) =>
                     setFormData({ ...formData, phone: e.target.value })
@@ -167,7 +167,7 @@ const ContactForm = () => {
                   Company
                 </label>
                 <Input
-                  placeholder="Your company name"
+                  placeholder="Company Name"
                   value={formData.company}
                   onChange={(e) =>
                     setFormData({ ...formData, company: e.target.value })
