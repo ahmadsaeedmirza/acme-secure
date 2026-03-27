@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
+import emailjs from "@emailjs/browser";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -11,8 +12,21 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { SERVICES } from "@/lib/services";
-import { toast } from "sonner";
-import { Send, Phone, Mail, MapPin } from "lucide-react";
+import {
+  CheckCircle,
+  AlertCircle,
+  X,
+  Send,
+  Phone,
+  Mail,
+  MapPin,
+} from "lucide-react";
+
+// EmailJS Configuration - Load from environment variables
+const EMAILJS_SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+const EMAILJS_TEMPLATE_ADMIN = import.meta.env.VITE_EMAILJS_TEMPLATE_ADMIN;
+const EMAILJS_TEMPLATE_USER = import.meta.env.VITE_EMAILJS_TEMPLATE_USER;
+const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 
 const ContactForm = () => {
   const [searchParams] = useSearchParams();
@@ -27,8 +41,25 @@ const ContactForm = () => {
     message: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [toast, setToast] = useState<{
+    message: string;
+    type: "success" | "error";
+  } | null>(null);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  // Initialize EmailJS
+  useEffect(() => {
+    emailjs.init(EMAILJS_PUBLIC_KEY);
+  }, []);
+
+  // Auto-hide toast after 5 seconds
+  useEffect(() => {
+    if (toast) {
+      const timer = setTimeout(() => setToast(null), 5000);
+      return () => clearTimeout(timer);
+    }
+  }, [toast]);
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     if (
@@ -37,29 +68,122 @@ const ContactForm = () => {
       !formData.phone.trim() ||
       !formData.service
     ) {
-      toast.error("Please fill in all required fields.");
+      setToast({
+        message: "Please fill in all required fields.",
+        type: "error",
+      });
+      return;
+    }
+
+    // Check if EmailJS is configured
+    if (
+      !EMAILJS_PUBLIC_KEY ||
+      !EMAILJS_SERVICE_ID ||
+      !EMAILJS_TEMPLATE_ADMIN ||
+      !EMAILJS_TEMPLATE_USER
+    ) {
+      setToast({
+        message:
+          "EmailJS is not properly configured. Check your .env.local file.",
+        type: "error",
+      });
+      console.error("Missing EmailJS config:", {
+        EMAILJS_PUBLIC_KEY: !!EMAILJS_PUBLIC_KEY,
+        EMAILJS_SERVICE_ID: !!EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ADMIN: !!EMAILJS_TEMPLATE_ADMIN,
+        EMAILJS_TEMPLATE_USER: !!EMAILJS_TEMPLATE_USER,
+      });
       return;
     }
 
     setIsSubmitting(true);
 
-    const subject = encodeURIComponent(`Enquiry: ${formData.service}`);
-    const body = encodeURIComponent(
-      `Name: ${formData.name}\nEmail: ${formData.email}\nPhone: ${formData.phone}\nCompany: ${formData.company}\nService: ${formData.service}\n\nMessage:\n${formData.message}`,
-    );
+    try {
+      // Template variables for both emails
+      const templateParams = {
+        to_email_admin: "ahmadsaeedcodes@gmail.com",
+        to_email_user: formData.email,
+        user_name: formData.name,
+        user_email: formData.email,
+        user_phone: formData.phone,
+        user_company: formData.company,
+        user_service: formData.service,
+        user_message: formData.message,
+      };
 
-    window.location.href = `mailto:enquiries@acmesecure.co.uk?subject=${subject}&body=${body}`;
-
-    setTimeout(() => {
-      setIsSubmitting(false);
-      toast.success(
-        "Your email client should have opened. Please send the email to complete your enquiry.",
+      // Send email to admin
+      await emailjs.send(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ADMIN,
+        templateParams,
       );
-    }, 1000);
+
+      // Send auto-response to user
+      await emailjs.send(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_USER,
+        templateParams,
+      );
+
+      // Reset form
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        company: "",
+        service: preSelectedService,
+        message: "",
+      });
+
+      setToast({
+        message:
+          "Thank you! Your enquiry has been sent. We'll get back to you shortly.",
+        type: "success",
+      });
+    } catch (error) {
+      console.error("EmailJS Error:", error);
+      setToast({
+        message:
+          "Failed to send enquiry. Please try again or contact us directly.",
+        type: "error",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
     <section className="section-padding bg-background">
+      {/* Toast Notification */}
+      {toast && (
+        <div className="fixed top-8 left-1/2 transform -translate-x-1/2 z-50 animate-in fade-in slide-in-from-top-4 duration-300">
+          <div
+            className={`
+              flex items-center gap-3 px-6 py-4 rounded-lg shadow-lg 
+              backdrop-blur-sm border font-heading font-semibold text-base
+              ${
+                toast.type === "success"
+                  ? "bg-emerald-50 border-emerald-200 text-emerald-900"
+                  : "bg-red-50 border-red-200 text-red-900"
+              }
+            `}
+          >
+            {toast.type === "success" ? (
+              <CheckCircle className="h-5 w-5 text-emerald-600 flex-shrink-0" />
+            ) : (
+              <AlertCircle className="h-5 w-5 text-red-600 flex-shrink-0" />
+            )}
+            <p className="max-w-sm">{toast.message}</p>
+            <button
+              onClick={() => setToast(null)}
+              className="ml-2 flex-shrink-0 hover:opacity-70 transition-opacity"
+            >
+              <X className="h-4 w-4" />
+            </button>
+          </div>
+        </div>
+      )}
+
       <div className="container mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
           {/* Info */}
@@ -102,7 +226,7 @@ const ContactForm = () => {
                     Location
                   </h4>
                   <p className="text-muted-foreground text-sm">
-                    United Kingdom
+                    London, United Kingdom
                   </p>
                 </div>
               </div>
@@ -222,7 +346,7 @@ const ContactForm = () => {
               disabled={isSubmitting}
             >
               <Send className="h-4 w-4 mr-2" />
-              {isSubmitting ? "Opening Email Client..." : "Send Enquiry"}
+              {isSubmitting ? "Sending..." : "Send Enquiry"}
             </Button>
           </form>
         </div>

@@ -82,7 +82,8 @@ const Footer = () => {
                 enquiries@acmesecure.co.uk
               </a>
               <div className="flex items-center gap-2 text-primary-foreground/60 text-sm">
-                <MapPin className="h-4 w-4 flex-shrink-0" /> United Kingdom
+                <MapPin className="h-4 w-4 flex-shrink-0" /> London, United
+                Kingdom
               </div>
             </div>
             <div className="flex items-center gap-6 mt-6">
@@ -123,11 +124,16 @@ const Footer = () => {
         <div className="border-t border-primary/10 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-primary-foreground/40 text-sm">
             © {new Date().getFullYear()} AcmeSecure. All rights reserved.
-            Powered by Devity Technologies
+            Powered by{" "}
+            <a
+              href="https://www.devitytechnologies.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-primary transition-colors"
+            >
+              Devity Technologies
+            </a>
           </p>
-          <div className="flex items-center gap-1 text-primary-foreground/40 text-xs">
-            <Shield className="h-3 w-3" /> SIA Approved Contractor
-          </div>
         </div>
       </div>
     </footer>

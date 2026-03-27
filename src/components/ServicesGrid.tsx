@@ -35,12 +35,15 @@ const ServicesGrid = ({ limit, showHeading = true }: ServicesGridProps) => {
       <div className="container mx-auto">
         {showHeading && (
           <div className="text-center mb-16">
-            <span className="text-primary font-semibold text-sm uppercase tracking-widest">What We Offer</span>
+            <span className="text-primary font-semibold text-sm uppercase tracking-widest">
+              What We Offer
+            </span>
             <h2 className="text-3xl md:text-4xl font-heading font-bold text-foreground mt-3">
               Our Security Services
             </h2>
             <p className="text-muted-foreground mt-4 max-w-2xl mx-auto">
-              We provide comprehensive security solutions to protect your business, property, and people across the United Kingdom.
+              We provide comprehensive security solutions to protect your
+              business, property, and people across the United Kingdom.
             </p>
           </div>
         )}

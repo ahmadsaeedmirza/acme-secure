@@ -1,9 +1,14 @@
+import { useEffect } from "react";
 import ServicesGrid from "@/components/ServicesGrid";
 import CTABanner from "@/components/CTABanner";
 import PageHero from "@/components/PageHero";
 import heroServices from "@/assets/hero-services.jpg";
 
 const Services = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <>
       {/* <section className="pt-32 pb-12 px-4 bg-section-dark">
