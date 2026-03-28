@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useSearchParams } from "react-router-dom";
 import emailjs from "@emailjs/browser";
 import { Button } from "@/components/ui/button";
@@ -31,6 +31,7 @@ const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 const ContactForm = () => {
   const [searchParams] = useSearchParams();
   const preSelectedService = searchParams.get("service") || "";
+  const contactFormRef = useRef<HTMLDivElement>(null);
 
   const [formData, setFormData] = useState({
     name: "",
@@ -58,6 +59,37 @@ const ContactForm = () => {
       return () => clearTimeout(timer);
     }
   }, [toast]);
+
+  // Scroll to contact form when service is pre-selected or on page load
+  useEffect(() => {
+    const scrollToForm = () => {
+      const isMobile = window.innerWidth < 1024; // lg breakpoint
+      const elementToScroll = isMobile
+        ? document.querySelector(".contact-form")
+        : contactFormRef.current;
+
+      if (elementToScroll) {
+        setTimeout(() => {
+          // Get navbar height to account for fixed positioning
+          const navbar = document.querySelector("nav");
+          const navbarHeight = navbar ? navbar.offsetHeight : 0;
+          const elementPosition =
+            elementToScroll.getBoundingClientRect().top + window.scrollY;
+          const offsetPosition = elementPosition - navbarHeight - 20; // 20px extra padding
+
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: "smooth",
+          });
+        }, 100);
+      }
+    };
+
+    // Scroll if service is pre-selected
+    if (preSelectedService) {
+      scrollToForm();
+    }
+  }, [preSelectedService]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -153,7 +185,7 @@ const ContactForm = () => {
   };
 
   return (
-    <section className="section-padding bg-background">
+    <section ref={contactFormRef} className="section-padding bg-background">
       {/* Toast Notification */}
       {toast && (
         <div className="fixed top-8 left-1/2 transform -translate-x-1/2 z-50 animate-in fade-in slide-in-from-top-4 duration-300">
@@ -236,7 +268,7 @@ const ContactForm = () => {
           {/* Form */}
           <form
             onSubmit={handleSubmit}
-            className="bg-card rounded-lg p-8 shadow-lg border border-border"
+            className="bg-card rounded-lg p-8 shadow-lg border border-border contact-form"
           >
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
               <div>

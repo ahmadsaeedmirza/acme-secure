@@ -1,8 +1,17 @@
+import { useEffect } from "react";
+import { useSearchParams } from "react-router-dom";
 import ContactForm from "@/components/ContactForm";
 import PageHero from "@/components/PageHero";
 import heroContact from "@/assets/hero-contact.jpg";
 
 const Contact = () => {
+  const [searchParams] = useSearchParams();
+
+  useEffect(() => {
+    // Scroll to top when navigating to contact page
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <>
       {/* <section className="pt-32 pb-12 px-4 bg-section-dark">
