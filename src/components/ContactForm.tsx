@@ -26,7 +26,7 @@ import {
 const EMAILJS_SERVICE_ID = import.meta.env.EMAILJS_SERVICE_ID;
 const EMAILJS_TEMPLATE_ADMIN = import.meta.env.EMAILJS_TEMPLATE_ADMIN;
 const EMAILJS_TEMPLATE_USER = import.meta.env.EMAILJS_TEMPLATE_USER;
-const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+const EMAILJS_PUBLIC_KEY = import.meta.env.EMAILJS_PUBLIC_KEY;
 
 const ContactForm = () => {
   const [searchParams] = useSearchParams();
