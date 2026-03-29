@@ -23,9 +23,9 @@ import {
 } from "lucide-react";
 
 // EmailJS Configuration - Load from environment variables
-const EMAILJS_SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
-const EMAILJS_TEMPLATE_ADMIN = import.meta.env.VITE_EMAILJS_TEMPLATE_ADMIN;
-const EMAILJS_TEMPLATE_USER = import.meta.env.VITE_EMAILJS_TEMPLATE_USER;
+const EMAILJS_SERVICE_ID = import.meta.env.EMAILJS_SERVICE_ID;
+const EMAILJS_TEMPLATE_ADMIN = import.meta.env.EMAILJS_TEMPLATE_ADMIN;
+const EMAILJS_TEMPLATE_USER = import.meta.env.EMAILJS_TEMPLATE_USER;
 const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 
 const ContactForm = () => {
