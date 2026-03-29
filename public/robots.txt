@@ -1,14 +1,32 @@
+# Allow all crawlers
+User-agent: *
+Allow: /
+
+# Disallow private or sensitive pages (if any)
+# Disallow: /admin
+# Disallow: /private
+
+# Specific rules for Googlebot
 User-agent: Googlebot
 Allow: /
 
+# Specific rules for Bingbot
 User-agent: Bingbot
 Allow: /
 
+# Specific rules for other bots
 User-agent: Twitterbot
 Allow: /
 
 User-agent: facebookexternalhit
 Allow: /
 
-User-agent: *
-Allow: /
+# Crawl delay for aggressive bots
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+# Sitemap location
+Sitemap: https://yourwebsite.com/sitemap.xml

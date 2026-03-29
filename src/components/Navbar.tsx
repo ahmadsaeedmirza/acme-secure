@@ -38,7 +38,7 @@ const Navbar = () => {
             </Link>
           ))}
           <a
-            href="tel:+44"
+            href="tel:+447919572959"
             className="flex items-center gap-2 text-primary-foreground/80 hover:text-primary transition-colors"
           >
             <Phone className="h-4 w-4" />

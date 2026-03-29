@@ -1,0 +1,17 @@
+{
+  "buildCommand": "bun run build",
+  "outputDirectory": "dist",
+  "framework": "vite",
+  "env": {
+    "VITE_EMAILJS_SERVICE_ID": "@acme_emailjs_service_id",
+    "VITE_EMAILJS_TEMPLATE_ADMIN": "@acme_emailjs_template_admin",
+    "VITE_EMAILJS_TEMPLATE_USER": "@acme_emailjs_template_user",
+    "VITE_EMAILJS_PUBLIC_KEY": "@acme_emailjs_public_key"
+  },
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
+}
