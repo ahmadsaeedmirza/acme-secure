@@ -3,6 +3,7 @@ import { useSearchParams } from "react-router-dom";
 import ContactForm from "@/components/ContactForm";
 import PageHero from "@/components/PageHero";
 import heroContact from "@/assets/hero-contact.jpg";
+import { updatePageMeta } from "@/lib/seo";
 
 const Contact = () => {
   const [searchParams] = useSearchParams();
@@ -10,6 +11,15 @@ const Contact = () => {
   useEffect(() => {
     // Scroll to top when navigating to contact page
     window.scrollTo(0, 0);
+    updatePageMeta({
+      title: "Contact AcmeSecure | Free Security Consultation Quote",
+      description:
+        "Get in touch with AcmeSecure for a free security consultation and competitive quote. Call 07919572959 or fill our contact form.",
+      keywords:
+        "contact security, free quote, security consultation, AcmeSecure contact, London security",
+      url: "https://acmesecure.co.uk/contact",
+      ogImage: "https://acmesecure.co.uk/AcmeSecure.png",
+    });
   }, []);
 
   return (
@@ -28,6 +38,7 @@ const Contact = () => {
         image={heroContact}
         title="Contact Us"
         subtitle="Get in touch for a free, no-obligation quote. We're here to help secure your business."
+        altText="Contact AcmeSecure - professional security services consultation and free quote"
       />
       <ContactForm />
     </>

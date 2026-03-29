@@ -251,19 +251,6 @@ const ContactForm = () => {
               </div>
               <div className="flex items-start gap-4">
                 <div className="w-12 h-12 rounded-lg bg-primary flex items-center justify-center flex-shrink-0">
-                  <MapPin className="h-5 w-5 text-white" />
-                </div>
-                <div>
-                  <h4 className="font-heading font-semibold text-foreground">
-                    Location
-                  </h4>
-                  <p className="text-muted-foreground text-sm">
-                    London, United Kingdom
-                  </p>
-                </div>
-              </div>
-              <div className="flex items-start gap-4">
-                <div className="w-12 h-12 rounded-lg bg-primary flex items-center justify-center flex-shrink-0">
                   <Phone className="h-5 w-5 text-white" />
                 </div>
                 <div>
@@ -274,8 +261,21 @@ const ContactForm = () => {
                     href="tel:+447919572959"
                     className="text-muted-foreground text-sm hover:text-primary transition-colors"
                   >
-                    07919572959
+                    +44 7919 572959
                   </a>
+                </div>
+              </div>
+              <div className="flex items-start gap-4">
+                <div className="w-12 h-12 rounded-lg bg-primary flex items-center justify-center flex-shrink-0">
+                  <MapPin className="h-5 w-5 text-white" />
+                </div>
+                <div>
+                  <h4 className="font-heading font-semibold text-foreground">
+                    Location
+                  </h4>
+                  <p className="text-muted-foreground text-sm">
+                    London, United Kingdom
+                  </p>
                 </div>
               </div>
             </div>

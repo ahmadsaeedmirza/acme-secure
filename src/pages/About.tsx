@@ -1,8 +1,10 @@
+import { useEffect } from "react";
 import { Shield, Target, Eye, Users } from "lucide-react";
 import CTABanner from "@/components/CTABanner";
 import PageHero from "@/components/PageHero";
 import heroAbout from "@/assets/hero-about.jpg";
 import aboutTeam from "@/assets/about-team.jpg";
+import { updatePageMeta } from "@/lib/seo";
 
 const VALUES = [
   {
@@ -32,12 +34,26 @@ const VALUES = [
 ];
 
 const About = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    updatePageMeta({
+      title: "About AcmeSecure | Trusted UK Security Provider",
+      description:
+        "Learn about AcmeSecure's commitment to professional security services across the UK. Industry-leading expertise since day one.",
+      keywords:
+        "about AcmeSecure, security company UK, trusted security provider, professional guards, London security",
+      url: "https://acmesecure.co.uk/about",
+      ogImage: "https://acmesecure.co.uk/AcmeSecure.png",
+    });
+  }, []);
+
   return (
     <>
       <PageHero
         image={heroAbout}
         title="About AcmeSecure"
         subtitle="A trusted name in UK security, dedicated to protecting what matters most."
+        altText="About AcmeSecure - trusted professional security provider across the United Kingdom"
       />
       {/* <section className="pt-32 pb-12 px-4 bg-section-dark">
         <div className="container mx-auto text-center">
@@ -85,7 +101,7 @@ const About = () => {
             <div className="rounded-lg overflow-hidden shadow-xl">
               <img
                 src={aboutTeam}
-                alt="AcmeSecure team"
+                alt="AcmeSecure professional security team - SIA licensed officers and security specialists"
                 className="w-full h-auto"
                 loading="lazy"
                 width={1280}

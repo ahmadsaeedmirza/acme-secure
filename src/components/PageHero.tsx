@@ -2,14 +2,15 @@ interface PageHeroProps {
   image: string;
   title: string;
   subtitle: string;
+  altText?: string;
 }
 
-const PageHero = ({ image, title, subtitle }: PageHeroProps) => {
+const PageHero = ({ image, title, subtitle, altText }: PageHeroProps) => {
   return (
     <section className="relative min-h-[45vh] mt-[80px] flex items-center justify-center">
       <img
         src={image}
-        alt=""
+        alt={altText || title}
         className="absolute inset-0 w-full h-full object-cover"
         width={1920}
         height={800}

@@ -15,7 +15,7 @@ const HeroSection = () => {
     <section className="relative min-h-screen flex items-center">
       <img
         src={heroBg}
-        alt=""
+        alt="Professional security solutions with SIA licensed officers - AcmeSecure UK"
         className="absolute inset-0 w-full h-full object-cover"
         width={1920}
         height={1080}
