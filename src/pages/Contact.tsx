@@ -17,8 +17,8 @@ const Contact = () => {
         "Get in touch with AcmeSecure for a free security consultation and competitive quote. Call 07919572959 or fill our contact form.",
       keywords:
         "contact security, free quote, security consultation, AcmeSecure contact, London security",
-      url: "https://acmesecure.co.uk/contact",
-      ogImage: "https://acmesecure.co.uk/AcmeSecure.png",
+      url: "https://www.acmesecure.co.uk/contact",
+      ogImage: "https://www.acmesecure.co.uk/AcmeSecure.png",
     });
   }, []);
 

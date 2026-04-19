@@ -32,7 +32,7 @@ Created `/src/lib/seo.ts` utility to dynamically update page meta tags:
 
 ### 4. **Sitemap Optimization** (`public/sitemap.xml`)
 
-- ✅ Fixed domain from placeholder to `acmesecure.co.uk`
+- ✅ Fixed domain from placeholder to `www.acmesecure.co.uk`
 - ✅ Proper priority hierarchy (1.0 for home, 0.9 for services, 0.8 for others)
 - ✅ Change frequency settings
 - ✅ Last modified dates
@@ -81,7 +81,7 @@ Created `/src/lib/seo.ts` utility to dynamically update page meta tags:
 1. **Update Vercel Environment** - Ensure base domain is set correctly
 2. **Submit Sitemap to Google Search Console**
    - Go to: https://search.google.com/search-console
-   - Submit: https://acmesecure.co.uk/sitemap.xml
+   - Submit: https://www.acmesecure.co.uk/sitemap.xml
 3. **Submit Sitemap to Bing Webmaster Tools**
    - Go to: https://www.bing.com/webmasters
    - Submit sitemap

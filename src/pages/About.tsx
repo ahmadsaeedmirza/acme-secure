@@ -42,8 +42,8 @@ const About = () => {
         "Learn about AcmeSecure's commitment to professional security services across the UK. Industry-leading expertise since day one.",
       keywords:
         "about AcmeSecure, security company UK, trusted security provider, professional guards, London security",
-      url: "https://acmesecure.co.uk/about",
-      ogImage: "https://acmesecure.co.uk/AcmeSecure.png",
+      url: "https://www.acmesecure.co.uk/about",
+      ogImage: "https://www.acmesecure.co.uk/AcmeSecure.png",
     });
   }, []);
 

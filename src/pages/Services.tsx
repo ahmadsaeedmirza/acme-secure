@@ -14,8 +14,8 @@ const Services = () => {
         "Comprehensive security solutions tailored to your needs. CCTV installation, manned guarding, event security, and dog security across the UK.",
       keywords:
         "security services, CCTV, manned guarding, event security, dog security, UK, London, professional guards",
-      url: "https://acmesecure.co.uk/services",
-      ogImage: "https://acmesecure.co.uk/AcmeSecure.png",
+      url: "https://www.acmesecure.co.uk/services",
+      ogImage: "https://www.acmesecure.co.uk/AcmeSecure.png",
     });
   }, []);
 

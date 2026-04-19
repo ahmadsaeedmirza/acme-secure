@@ -13,8 +13,8 @@ const Index = () => {
         "Award-winning security services across the UK. CCTV, manned guarding, event security, dog security and more. Free consultation.",
       keywords:
         "security services UK, CCTV installation, manned guarding, event security, dog security, London security, professional security",
-      url: "https://acmesecure.co.uk/",
-      ogImage: "https://acmesecure.co.uk/AcmeSecure.png",
+      url: "https://www.acmesecure.co.uk/",
+      ogImage: "https://www.acmesecure.co.uk/AcmeSecure.png",
     });
   }, []);
 
