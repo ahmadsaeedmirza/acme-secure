@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { Shield, CheckCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import heroBg from "@/assets/new-hero.jpg";
+import heroBg from "@/assets/new-hero.webp";
 
 const HIGHLIGHTS = [
   "SIA Licensed Officers",
